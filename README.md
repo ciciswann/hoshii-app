@@ -1,24 +1,27 @@
-# README
+# Hoshii App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+An app to view all upcoming mechanical keybpoard groupbuys and add them to wishlists. 
 
-Things you may want to cover:
+## Features
 
-* Ruby version
+* Third-party sign-up and login
+* Wishlist
+* Sorting & Search functionality
 
-* System dependencies
+## Installation Guide
 
-* Configuration
+Fork and clone repo
 
-* Database creation
+Install all gem dependencies: `bundle install`
 
-* Database initialization
+Create database scheme with migration: `rails db:migrate`
 
-* How to run the test suite
+Seed database: `rails db:seed`
 
-* Services (job queues, cache servers, search engines, etc.)
+Start local server: `rails s`
 
-* Deployment instructions
+Go to localhost via: `http://localhost:3000`
 
-* ...
+## Contributing
+
+Contibutions are welcome. 
