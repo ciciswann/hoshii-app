@@ -1,12 +1,18 @@
 # Hoshii App
 
-An app to view all upcoming mechanical keybpoard groupbuys and add them to wishlists. 
+An app to view all upcoming mechanical keyboard groupbuys and add them to wishlists. 
 
 ## Features
 
 * Third-party sign-up and login
 * Wishlist
 * Sorting & Search functionality
+
+## Supported Versions
+
+* Ruby
+* Rails
+* SQLite3
 
 ## Installation Guide
 
@@ -24,4 +30,4 @@ Go to localhost via: `http://localhost:3000`
 
 ## Contributing
 
-Contibutions are welcome. 
+Bug Report and pull requests are welcome. Please open issues to provide feedback.
