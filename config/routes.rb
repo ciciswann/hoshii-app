@@ -1,16 +1,17 @@
 Rails.application.routes.draw do
-  root to: 'sessions#welcome'
   devise_for :users, controllers: { omniauth_callbacks: 'sessions' }
+  root to: 'sessions#welcome'
+  
   resources :users do 
     resources :wishlists
   end
 
   resources :sessions
   
-  resources :groupbuys do
-    collection do
-    end
-  end
+  # resources :groupbuys do
+  #   collection do
+  #   end
+  # end
 
   #get 'users/sign_up' 
 
