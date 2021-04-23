@@ -1,24 +1,33 @@
-# README
+# Hoshii App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+An app to view all upcoming mechanical keyboard groupbuys and add them to wishlists. 
 
-Things you may want to cover:
+## Features
 
-* Ruby version
+* Third-party sign-up and login
+* Wishlist
+* Sorting & Search functionality
 
-* System dependencies
+## Supported Versions
 
-* Configuration
+* Ruby
+* Rails
+* SQLite3
 
-* Database creation
+## Installation Guide
 
-* Database initialization
+Fork and clone repo
 
-* How to run the test suite
+Install all gem dependencies: `bundle install`
 
-* Services (job queues, cache servers, search engines, etc.)
+Create database scheme with migration: `rails db:migrate`
 
-* Deployment instructions
+Seed database: `rails db:seed`
 
-* ...
+Start local server: `rails s`
+
+Go to localhost via: `http://localhost:3000`
+
+## Contributing
+
+Bug Report and pull requests are welcome. Please open issues to provide feedback.
