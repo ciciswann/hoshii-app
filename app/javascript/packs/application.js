@@ -8,8 +8,6 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
-import "bootstrap";
-import "./src/application.scss";
 //global.$ = jQuery;
 
 Rails.start()
