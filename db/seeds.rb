@@ -4,64 +4,74 @@ Category.create!(name: 'Keyboard')
 Category.create!(name: 'Keycap')
 Category.create!(name: 'Switch')
 
-def seed_keeb_gb
-    keeb = RestClient.get 'https://mechgroupbuyswrapper.herokuapp.com/keyboards?status=live'
+def seed_groupbuys(url)
+    
+    groupbuy = RestClient.get(url)
 
-    keeb_array = JSON.parse(keeb)
+    groupbuy_array = JSON.parse(groupbuy)
 
-    keeb_array.each do |keyboard|
-        Groupbuy.create(
-            name: keyboard["name"],
-            start_date: keyboard["startDate"],
-            end_date: keyboard["endDate"],
-            pricing: keyboard["pricing"],
-            sale_type: keyboard["saleType"],
-            vendor: keyboard["vendors"],
-            image: keyboard["mainImage"],
-            category_id: Category.find(1)
+    groupbuy_array.each do |groupbuy|
+        Groupbuy.create!(
+            name: if_null(groupbuy["name"]),
+            start_date: if_null(groupbuy["startDate"]),
+            end_date: if_null(groupbuy["endDate"]),
+            pricing: price_to_f(groupbuy["pricing"]),
+            sale_type: if_null(groupbuy["saleType"]),
+            vendor: if_null(groupbuy["vendors"]),
+            image: groupbuy["mainImage"],
+            status: set_status(url),
+            category_id: set_category(groupbuy["type"])
         )
     end
 end
 
-def seed_kc_gb
-    kc = RestClient.get 'https://mechgroupbuyswrapper.herokuapp.com/keycaps?status=live'
+def price_to_f(str)
+    price = str.gsub("Base: ","").to_f
+end
 
-    kc_array = JSON.parse(kc)
-
-    kc_array.each do |kc|
-        Groupbuy.create(
-            name: kc["name"],
-            start_date: kc["startDate"],
-            end_date: kc["endDate"],
-            pricing: kc["pricing"],
-            sale_type: kc["saleType"],
-            vendor: kc["vendors"],
-            image: kc["mainImage"],
-            category_id: Category.find(2)
-        )
+def set_category(type)
+    if type == "keyboards"
+        return 1
+    elsif type == "keycaps"
+        return 2
+    elsif type == "switches"
+        return 3
     end
 end
 
-def seed_sgb
-    s = RestClient.get 'https://mechgroupbuyswrapper.herokuapp.com/switches?status=live'
-
-    s_array = JSON.parse(s)
-
-    s_array.each do |s|
-        Groupbuy.create(
-            name: s["name"],
-            start_date: s["startDate"],
-            end_date: s["endDate"],
-            pricing: s["pricing"],
-            sale_type: s["saleType"],
-            vendor: s["vendors"],
-            image: s["mainImage"],
-            category_id: Category.find(3)
-        )
+def if_null(str)
+    if str.blank? || str.length < 1
+        return "Not Available"
+    else 
+        return str
     end
 end
 
+def set_status(url)
+    if url.include? "live"
+        return "live"
+    elsif url.include? "upcoming"
+        return "upcoming"
+    elsif url.include? "ic"
+        return "ic"
+    elsif url.include? "ended"
+        return "ended"
+    end
+end
 
-seed_kc_gb
-seed_keeb_gb
-seed_sgb
+#### SEED DATABASE ####
+
+seed_groupbuys('https://mechgroupbuyswrapper.herokuapp.com/keyboards?status=live')
+seed_groupbuys('https://mechgroupbuyswrapper.herokuapp.com/keyboards?status=upcoming')
+seed_groupbuys('https://mechgroupbuyswrapper.herokuapp.com/keyboards?status=ic')
+seed_groupbuys('https://mechgroupbuyswrapper.herokuapp.com/keyboards?status=ended')
+
+seed_groupbuys('https://mechgroupbuyswrapper.herokuapp.com/keycaps?status=live')
+seed_groupbuys('https://mechgroupbuyswrapper.herokuapp.com/keycaps?status=upcoming')
+seed_groupbuys('https://mechgroupbuyswrapper.herokuapp.com/keycaps?status=ic')
+seed_groupbuys('https://mechgroupbuyswrapper.herokuapp.com/keycaps?status=ended')
+
+seed_groupbuys('https://mechgroupbuyswrapper.herokuapp.com/switches?status=live')
+seed_groupbuys('https://mechgroupbuyswrapper.herokuapp.com/switches?status=upcoming')
+seed_groupbuys('https://mechgroupbuyswrapper.herokuapp.com/switches?status=ic')
+seed_groupbuys('https://mechgroupbuyswrapper.herokuapp.com/switches?status=ended')
