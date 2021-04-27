@@ -1,10 +1,18 @@
 class Groupbuy < ApplicationRecord
-    belongs_to :wishlist
-    belongs_to :category
+    belongs_to :wishlist, optional: true
+    belongs_to :category, optional: true
 
-    validates :name, :start_date, :end_date, :pricing, :image, presence: true
-    validates :image, :name, uniqueness: true
-    validates :name, length: {minimum: 2}
+    validates :name, :start_date, :end_date, :pricing, presence: true
+    validates :name, length: {minimum: 1}
 
     # Scope Methods
+
+    def self.search(search)
+        if search
+            where(["name LIKE ?", "%#{search}%"])
+        else
+            @groupbuys = Groupbuy.all
+        end
+    end
+
 end
