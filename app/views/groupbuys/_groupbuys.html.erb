@@ -1,0 +1,142 @@
+<script>
+    $(document).ready(function(){
+    
+        $('.like-button').click(function(){
+            $(this).toggleClass('is-active');
+        })
+    
+    })
+    $.removeClass('hoverCssClass');
+
+    var checkBoxes = document.querySelectorAll(".form-check-input");
+    var form = document.querySelector('form');
+    
+    for (const check of checkBoxes) {
+    check.addEventListener( 'change', function() {
+      Rails.fire(form, 'submit');
+    });
+    }
+</script>
+
+
+
+<div class="py-6">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-4">
+                <div class="row d-lg-flex justify-content-between align-items-center">
+                    <div class="col-md-6 col-lg-8 col-xl-9 ">
+                        <h4 class="mb-3 mb-lg-0">Displaying <%= @groupbuys.count%> Groupbuys </h4>
+                    </div>
+                    <div class="d-inline-flex col-md-6 col-lg-4 col-xl-3 ">
+                        <div class="mr-2">
+                            <!-- Nav -->
+                            <div class="nav btn-group flex-nowrap" role="tablist">
+                                <button class="btn btn-outline-white active" data-toggle="tab" data-target="#tabPaneGrid" role="tab" aria-controls="tabPaneGrid" aria-selected="true">
+                                    <span class="fe fe-grid"></span>
+                                </button>
+                                <button class="btn btn-outline-white" data-toggle="tab" data-target="#tabPaneList" role="tab" aria-controls="tabPaneList" aria-selected="false">
+                                    <span class="fe fe-list"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- List  -->
+                        <div class="dropdown bootstrap-select" style="width: 100%;"><select class="selectpicker" data-width="100%" tabindex="null">
+                            <option value="">Sort by</option>
+                            <option value="Newest">Newest</option>
+                            <option value="Free">Free</option>
+                            <option value="Most Popular">Most Popular</option>
+                            <option value="Highest Rated">Highest Rated</option>
+                            </select><button type="button" tabindex="-1" class="btn dropdown-toggle btn-light bs-placeholder" data-toggle="dropdown" role="combobox" aria-owns="bs-select-1" aria-haspopup="listbox" aria-expanded="false" title="Sort by"><div class="filter-option"><div class="filter-option-inner"><div class="filter-option-inner-inner">Sort by</div></div> </div></button><div class="dropdown-menu" style="max-height: 461px; overflow: hidden; min-height: 114px;"><div class="inner show" role="listbox" id="bs-select-1" tabindex="-1" aria-activedescendant="bs-select-1-0" style="max-height: 445px; overflow-y: auto; min-height: 98px;"><ul class="dropdown-menu inner show" role="presentation" style="margin-top: 0px; margin-bottom: 0px;"><li class="selected active"><a role="option" class="dropdown-item active selected" id="bs-select-1-0" tabindex="0" aria-setsize="5" aria-posinset="1" aria-selected="true"><span class="text">Sort by</span></a></li><li><a role="option" class="dropdown-item" id="bs-select-1-1" tabindex="0"><span class="text">Newest</span></a></li><li><a role="option" class="dropdown-item" id="bs-select-1-2" tabindex="0"><span class="text">Free</span></a></li><li><a role="option" class="dropdown-item" id="bs-select-1-3" tabindex="0"><span class="text">Most Popular</span></a></li><li><a role="option" class="dropdown-item" id="bs-select-1-4" tabindex="0"><span class="text">Highest Rated</span></a></li></ul></div></div></div>
+                        </div>
+                    </div>
+                </div>
+            <div class="col-xl-3 col-lg-3 col-md-4 mb-4 mb-lg-0">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="mb-0">Filter</h4>
+                    </div>
+                    <div class="card-body">
+                        <span class="dropdown-header px-0 mb-2"> Type</span>
+                        <!-- Checkbox -->
+                        <div class="custom-control custom-checkbox mb-1">
+                            <input type="checkbox" class="custom-control-input" id="reactCheck" checked="">
+                            <label class="custom-control-label" for="reactCheck">Keyboard</label>
+                        </div>
+                        <!-- Checkbox -->
+                        <div class="custom-control custom-checkbox mb-1">
+                            <input type="checkbox" class="custom-control-input" id="javascriptCheck">
+                            <label class="custom-control-label" for="javascriptCheck">Keycap</label>
+                        </div>
+                        <!-- Checkbox -->
+                        <div class="custom-control custom-checkbox mb-1">
+                            <input type="checkbox" class="custom-control-input" id="angularCheck">
+                            <label class="custom-control-label" for="angularCheck">Switch</label>
+                        </div>
+                    </div>
+                    <div class="card-body border-top">
+                        <span class="dropdown-header px-0 mb-2"> Status</span>
+                        <!-- Checkbox -->
+                        <div class="custom-control custom-checkbox mb-1">
+                            <input type="checkbox" class="custom-control-input" id="allTwoCheck">
+                            <label class="custom-control-label" for="allTwoCheck">Live</label>
+                        </div>
+                        <!-- Checkbox -->
+                        <div class="custom-control custom-checkbox mb-1">
+                            <input type="checkbox" class="custom-control-input" id="beginnerTwoCheck" checked="">
+                            <label class="custom-control-label" for="beginnerTwoCheck">Upcoming</label>
+                        </div>
+                        <!-- Checkbox -->
+                        <div class="custom-control custom-checkbox mb-1">
+                            <input type="checkbox" class="custom-control-input" id="intermediateCheck">
+                            <label class="custom-control-label" for="intermediateCheck">Interest Check</label>
+                        </div>
+                        <!-- Checkbox -->
+                        <div class="custom-control custom-checkbox mb-1">
+                            <input type="checkbox" class="custom-control-input" id="AdvancedTwoCheck">
+                            <label class="custom-control-label" for="AdvancedTwoCheck">Ended</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-9 col-lg-9 col-md-8 col-12">
+                <div class="row">
+                    <% @groupbuys.each do |g|%>
+                        <div class="col-lg-4">
+                            <div class="card mb-4 card-hover">
+                                <a href="#!" class="card-img-top">
+                                        <img src="<%=g.image%>" alt="" class="card-img-top rounded-top" id="gb-image">
+                                </a>
+                                <div class="card-body">
+                                <h3 class="h4 mb-2 text-truncate-line-2 ">
+                                    <a href="#!" class="text-inherit">
+                                    <%= g.name %>
+                                    </a>
+                                </h3>
+                            <ul class="mb-3  list-inline">
+                                <li class="list-inline-item"><p class="boldish">Start Date:</p> <%= g.start_date %></li>
+                            </ul>
+                            <ul class="mb-3  list-inline">
+                                <li class="list-inline-item"><p class="boldish">End Date:</p> <%= g.end_date %></li>
+                            </ul>
+                            <ul class="mb-3  list-inline">
+                                <li class="list-inline-item"><p class="boldish">Base Price:</p> <%= '$%.2f' % g.pricing %></li>
+                            </ul>
+                            <ul class="mb-3  list-inline">
+                                <li class="list-inline-item"><p class="boldish">Sale Type:</p> <%= g.sale_type %></li>
+                            </ul>
+                            <a href="javascript:void(0);" class="like-button">
+                                <i class="material-icons not-liked bouncy">favorite_border</i>
+                                <i class="material-icons is-liked bouncy">favorite</i>
+                                <span class="like-overlay"></span>
+                            </a>
+                        </div>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
