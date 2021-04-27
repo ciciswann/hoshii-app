@@ -24,7 +24,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'json'
 
-gem 'rest-client'
+gem 'rest-client' 
 
 gem 'omniauth'
 gem 'omniauth-github', '~> 1.0'
@@ -34,6 +34,14 @@ gem 'omniauth-rails_csrf_protection'
 gem 'figaro'
 
 gem 'devise'
+
+gem 'bootstrap'
+
+gem 'jquery-rails'
+
+gem 'popper_js'
+
+gem 'acts-as-taggable-on'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
