@@ -1,16 +1,56 @@
 <body>
-    <div class="py-4 py-lg-6 bg-primary">
+    <div class="bg-primary">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-12">
-                <div>
-                    <h1 class="text-white mb-1 display-4">Welcome to Hoshii</h1>
+            <!-- Hero Section -->
+            <div class="row align-items-center no-gutters">
+                <div class="col-xl-5 col-lg-6 col-md-13">
+                    <div class="py-5 py-lg-0">
+                        <h1 class="text-white display-4 font-weight-bold">Welcome to Hoshii!</h1>
+                        <p class="text-white-50 mb-4 lead">
+                            Stay up-to-date on the latest custom mechanical keyboard groupbuys.
+                        </p>
+                        <a href="/groupbuys" class="btn btn-white">Browse Groupbuys</a>
+                        <a href="pages/sign-in.html" class="btn btn-success">Create a Wishlist</a>
+                    </div>
                 </div>
+                <div class=" col-xl-7 col-lg-6 col-md-13 text-lg-right text-center">
+                    <img src="assets/keebs2.png" alt="" class="img-fluid">
                 </div>
             </div>
         </div>
     </div>
-
-    <%= render "groupbuys" %>
+    <div class="bg-white py-4 shadow-sm">
+        <div class="container">
+            <div class="row align-items-center no-gutters">
+                <!-- Features -->
+                <div class="col-xl-4 col-lg-4 col-md-6 mb-lg-0 mb-2">
+                    <div class="d-flex align-items-center">
+                        <span class="icon-sahpe icon-lg bg-light-warning rounded-circle text-center text-dark-warning font-size-md "> <i class="fe fe-video"> </i></span>
+                        <div class="ml-3">
+                            <h4 class="mb-0 font-weight-semi-bold">Track Live and Upcoming Groupbuys</h4>
+                            <p class="mb-0">All Groupbuys in one place</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Features -->
+                <div class="col-xl-4 col-lg-4 col-md-6 mb-lg-0 mb-2">
+                    <div class="d-flex align-items-center">
+                        <span class="icon-sahpe icon-lg bg-light-warning rounded-circle text-center text-dark-warning font-size-md "> <i class="fe fe-users"> </i></span>
+                        <div class="ml-3">
+                            <h4 class="mb-0 font-weight-semi-bold">Get Notifications</h4>
+                            <p class="mb-0">Receive Updates When Groupbuys are Live</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="py-6">
+        <div class="container">
+            <div class="row">
+                <%= render "groupbuys" %>
+            </div>
+        </div>
+    </div>
     
 </body>
