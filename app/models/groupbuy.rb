@@ -6,6 +6,9 @@ class Groupbuy < ApplicationRecord
     validates :name, length: {minimum: 1}
 
     # Scope Methods
+    scope :filter_by_status, -> (status) { where status: status }
+    scope :sort_by_price, -> (price) { order("price ASC")}
+    scope :filtered, -> (query_params) { Groupbuy::Filter.new.filter(self, query_params) }
 
     def self.search(search)
         if search
@@ -14,5 +17,5 @@ class Groupbuy < ApplicationRecord
             @groupbuys = Groupbuy.all
         end
     end
-
+    
 end
