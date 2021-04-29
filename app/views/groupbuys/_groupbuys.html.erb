@@ -18,43 +18,39 @@
     }
 </script>
 
-
-
            
-                <div class="row">
-                    <% @groupbuys.each do |g|%>
-                        <div class="col-lg-4">
-                            <div class="card mb-4 card-hover">
-                                <a href="/groupbuys/<%= g.id %>" class="card-img-top">
-                                        <img src="<%=g.image%>" alt="" class="card-img-top rounded-top" id="gb-image">
-                                </a>
-                                <div class="card-body">
-                                <h3 class="h4 mb-2 text-truncate-line-2 ">
-                                    <a href="#!" class="text-inherit">
-                                    <%= g.name %>
-                                    </a>
-                                </h3>
-                            <ul class="mb-3  list-inline">
-                                <li class="list-inline-item"><p class="boldish">Start Date:</p> <%= g.start_date %></li>
-                            </ul>
-                            <ul class="mb-3  list-inline">
-                                <li class="list-inline-item"><p class="boldish">End Date:</p> <%= g.end_date %></li>
-                            </ul>
-                            <ul class="mb-3  list-inline">
-                                <li class="list-inline-item"><p class="boldish">Base Price:</p> <%= '$%.2f' % g.pricing %></li>
-                            </ul>
-                            <ul class="mb-3  list-inline">
-                                <li class="list-inline-item"><p class="boldish">Sale Type:</p> <%= g.sale_type %></li>
-                            </ul>
-                            <a href="javascript:void(0);" class="like-button">
-                                <i class="material-icons not-liked bouncy">favorite_border</i>
-                                <i class="material-icons is-liked bouncy">favorite</i>
-                                <span class="like-overlay"></span>
-                            </a>
-                            
-                        
-                        </div>
-                            </div>
-                        </div>
-                    <% end %>
+<div class="row">
+    <% @groupbuys.each do |g|%>
+        <div class="col-lg-4">
+            <div class="card mb-4 card-hover">
+                <a href="/groupbuys/<%= g.id %>" class="card-img-top">
+                    <img src="<%=g.image%>" alt="" class="card-img-top rounded-top" id="gb-image">
+                </a>
+                <div class="card-body">
+                    <h3 class="h4 mb-2 text-truncate-line-2 ">
+                        <a href="#!" class="text-inherit">
+                        <%= g.name %>
+                        </a>
+                    </h3>
+                    <ul class="mb-3  list-inline">
+                        <li class="list-inline-item"><p class="boldish">Start Date:</p> <%= g.start_date %></li>
+                    </ul>
+                    <ul class="mb-3  list-inline">
+                        <li class="list-inline-item"><p class="boldish">End Date:</p> <%= g.end_date %></li>
+                    </ul>
+                    <ul class="mb-3  list-inline">
+                        <li class="list-inline-item"><p class="boldish">Base Price:</p> <%= '$%.2f' % g.pricing %></li>
+                    </ul>
+                    <ul class="mb-3  list-inline">
+                        <li class="list-inline-item"><p class="boldish">Sale Type:</p> <%= g.sale_type %></li>
+                    </ul>
+                    <a href="javascript:void(0);" class="like-button">
+                        <i class="material-icons not-liked bouncy">favorite_border</i>
+                        <i class="material-icons is-liked bouncy">favorite</i>
+                        <span class="like-overlay"></span>
+                    </a>
                 </div>
+            </div>
+        </div>
+    <% end %>
+</div>
