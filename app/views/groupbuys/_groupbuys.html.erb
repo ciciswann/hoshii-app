@@ -20,12 +20,12 @@
 
 
 
-            <div class="col-xl-9 col-lg-9 col-md-8 col-12 col-13">
+           
                 <div class="row">
                     <% @groupbuys.each do |g|%>
                         <div class="col-lg-4">
                             <div class="card mb-4 card-hover">
-                                <a href="#!" class="card-img-top">
+                                <a href="/groupbuys/<%= g.id %>" class="card-img-top">
                                         <img src="<%=g.image%>" alt="" class="card-img-top rounded-top" id="gb-image">
                                 </a>
                                 <div class="card-body">
@@ -51,9 +51,10 @@
                                 <i class="material-icons is-liked bouncy">favorite</i>
                                 <span class="like-overlay"></span>
                             </a>
+                            
+                        
                         </div>
                             </div>
                         </div>
                     <% end %>
                 </div>
-            </div>
