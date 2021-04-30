@@ -6,7 +6,7 @@ class Wishlist < ApplicationRecord
     validates :name, presence: true,
             length: {maximum: 50,
              too_long: "50 characters is the maximum allowed"}
-    validates :notes, length: {maximum: 400,
+    validates :note, length: {maximum: 400,
               too_long: "400 characters is the maximum allowed"},
             allow_blank: true
 
