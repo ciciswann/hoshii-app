@@ -1,0 +1,88 @@
+<script>
+    function changeSelected() { 
+        document.getElementById('wishlist_id').selectedIndex=1;
+
+    } 
+</script>
+
+<div class="py-6">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-4">
+                <div class="row d-lg-flex justify-content-between align-items-center">
+                    <div class="col-md-6 col-lg-8 col-xl-9 ">
+                        <h4 class="mb-3 mb-lg-0">Displaying <%= @groupbuys.count%> Groupbuys </h4>
+                    </div>
+                    <div class="d-inline-flex col-md-6 col-lg-4 col-xl-3 ">
+                        <!-- List  -->
+                        <div class="dropdown bootstrap-select" style="width: 100%;">
+                            <%= form_with(url: groupbuys_url, method: :get, class: "selectpicker sort-item" ) do |f| %>
+                                <%= collection_select(:wishlist, :wishlist, @user_wishlists, :id, :name, {:selected => @user_wishlists.first}) %>
+                                <select name="wishlist_id" id="wishlist_id">
+                                    <!-- Select a Wishlist -->
+                                    <option value="" <%= !@wishlist ? "selected" : "" %>>SELECT A WISHLIST</option>
+
+                                    <% @user_wishlists.each do |w| %>
+                                        <option data-sort="<%= w.id %>" value="<%=w.id %>" <%= "#{w.id}" == @wishlist ? "selected" : "" %>><%=w.name%></option>
+                                    <% end %>
+                                </select>
+                                <%= submit_tag('Update', :name => nil, onClick:"changeSelected();") %>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-4 mb-4 mb-lg-0">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="mb-0">Filter</h4>
+                    </div>
+                    <div class="card-body">
+                        <span class="dropdown-header px-0 mb-2"> Type</span>
+                        <!-- Checkbox -->
+                        <div class="custom-control custom-checkbox mb-1">
+                            <input type="checkbox" class="custom-control-input" name="" id="reactCheck" checked="">
+                            <label class="custom-control-label" for="reactCheck">Keyboard</label>
+                        </div>
+                        <!-- Checkbox -->
+                        <div class="custom-control custom-checkbox mb-1">
+                            <input type="checkbox" class="custom-control-input" id="javascriptCheck">
+                            <label class="custom-control-label" for="javascriptCheck">Keycap</label>
+                        </div>
+                        <!-- Checkbox -->
+                        <div class="custom-control custom-checkbox mb-1">
+                            <input type="checkbox" class="custom-control-input" id="angularCheck">
+                            <label class="custom-control-label" for="angularCheck">Switch</label>
+                        </div>
+                    </div>
+                    <div class="card-body border-top">
+                        <span class="dropdown-header px-0 mb-2"> Status</span>
+                        <!-- Checkbox -->
+                        <div class="custom-control custom-checkbox mb-1">
+                            <input type="checkbox" class="custom-control-input" id="allTwoCheck">
+                            <label class="custom-control-label" for="allTwoCheck">Live</label>
+                        </div>
+                        <!-- Checkbox -->
+                        <div class="custom-control custom-checkbox mb-1">
+                            <input type="checkbox" class="custom-control-input" id="beginnerTwoCheck" checked="">
+                            <label class="custom-control-label" for="beginnerTwoCheck">Upcoming</label>
+                        </div>
+                        <!-- Checkbox -->
+                        <div class="custom-control custom-checkbox mb-1">
+                            <input type="checkbox" class="custom-control-input" id="intermediateCheck">
+                            <label class="custom-control-label" for="intermediateCheck">Interest Check</label>
+                        </div>
+                        <!-- Checkbox -->
+                        <div class="custom-control custom-checkbox mb-1">
+                            <input type="checkbox" class="custom-control-input" id="AdvancedTwoCheck">
+                            <label class="custom-control-label" for="AdvancedTwoCheck">Ended</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-9 col-lg-9 col-md-8 col-12">
+                <%= render "groupbuys" %>
+            </div>
+        </div>
+    </div>
+</div>
