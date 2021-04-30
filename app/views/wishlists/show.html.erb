@@ -1,0 +1,57 @@
+<div class="pt-lg-8 pt-8 pb-12 bg-primary">
+<div class="container">
+    <div class="row align-items-center">
+        <div class="col-xl-7 col-lg-7 col-md-12">
+            <div>
+                <h1 class="text-white display-4 font-weight-bold"><%= @wishlist.name %></h1>
+                <p class="text-white-50 lead">
+                    <% if !@wishlist.note.blank? %>
+                        Note: <%= @wishlist.note %>
+                    <% end %>
+                </p>
+                <%= link_to "Edit wishlist", edit_user_wishlist_path(@user, id: @wishlist.id), class:"btn btn-white" %><br><br>
+                <%= button_to "Delete", user_wishlist_path(@user, id: @wishlist.id), method: :delete, class:"btn btn-white", data: {confirm: 'Are you sure?'} %>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="py-6">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-9 col-lg-9 col-md-8 col-12">
+                <div class="row">
+                    <% @wishlist.groupbuys.each do |g| %>
+                        <div class="col-lg-4">
+                            <div class="card mb-4 card-hover">
+                                <a href="#!" class="card-img-top">
+                                        <img src="<%=g.image%>" alt="" class="card-img-top rounded-top" id="gb-image">
+                                </a>
+                                <div class="card-body">
+                                    <h3 class="h4 mb-2 text-truncate-line-2 ">
+                                        <a href="#!" class="text-inherit">
+                                        <%= g.name %>
+                                        </a>
+                                    </h3>
+                                    <ul class="mb-3  list-inline">
+                                        <li class="list-inline-item"><p class="boldish">Start Date:</p> <%= g.start_date %></li>
+                                    </ul>
+                                    <ul class="mb-3  list-inline">
+                                        <li class="list-inline-item"><p class="boldish">End Date:</p> <%= g.end_date %></li>
+                                    </ul>
+                                    <ul class="mb-3  list-inline">
+                                        <li class="list-inline-item"><p class="boldish">Base Price:</p> <%= '$%.2f' % g.pricing %></li>
+                                    </ul>
+                                    <ul class="mb-3  list-inline">
+                                        <li class="list-inline-item"><p class="boldish">Sale Type:</p> <%= g.sale_type %></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
