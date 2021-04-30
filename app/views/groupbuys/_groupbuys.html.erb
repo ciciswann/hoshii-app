@@ -16,6 +16,9 @@
       Rails.fire(form, 'submit');
     });
     }
+    $(function () {
+    $('[data-toggle="popover"]').popover()
+    })
 </script>
 
            
@@ -24,11 +27,18 @@
         <div class="col-lg-4">
             <div class="card mb-4 card-hover">
                 <a href="/groupbuys/<%= g.id %>" class="card-img-top">
+                    <% if g.wishlist_id != nil %>
+
+                            <div href="#" class="heart">
+                                <i class="fa fa-heart fa-1x"></i>
+                            </div>
+                          
+                    <% end %>
                     <img src="<%=g.image%>" alt="" class="card-img-top rounded-top" id="gb-image">
                 </a>
                 <div class="card-body">
                     <h3 class="h4 mb-2 text-truncate-line-2 ">
-                        <a href="#!" class="text-inherit">
+                        <a href="/groupbuys/<%= g.id %>" class="text-inherit">
                         <%= g.name %>
                         </a>
                     </h3>
@@ -44,11 +54,29 @@
                     <ul class="mb-3  list-inline">
                         <li class="list-inline-item"><p class="boldish">Sale Type:</p> <%= g.sale_type %></li>
                     </ul>
-                    <a href="javascript:void(0);" class="like-button">
-                        <i class="material-icons not-liked bouncy">favorite_border</i>
-                        <i class="material-icons is-liked bouncy">favorite</i>
-                        <span class="like-overlay"></span>
-                    </a>
+                    <% if @wishlist%>
+                        <%= form_tag(toggle_wishlist_groupbuy_url(@user, @wishlist), remote: true) do |f| %>
+                            <%= hidden_field_tag :wishlist_id, @wishlist.id %>
+                            <%= hidden_field_tag :groupbuy_id, g.id %> 
+                        
+                            <!-- Button: Add or Remove item from list -->
+                            <button id="like">
+                                <% if @wishlist.has_groupbuy?(g) %>
+                                    <a href="javascript:void(0);" class="like-button is-active">
+                                        <i class="material-icons not-liked bouncy">favorite_border</i>
+                                        <i class="material-icons is-liked bouncy">favorite</i>
+                                        <span class="like-overlay"></span>
+                                    </a>
+                                <% else %>
+                                    <a href="javascript:void(0);" class="like-button">
+                                        <i class="material-icons not-liked bouncy">favorite_border</i>
+                                        <i class="material-icons is-liked bouncy">favorite</i>
+                                        <span class="like-overlay"></span>
+                                    </a>
+                                <% end %>
+                            </button>
+                        <% end %>
+                    <% end %>
                 </div>
             </div>
         </div>
