@@ -1,5 +1,6 @@
 class WishlistsController < ApplicationController
     skip_before_action :verify_authenticity_token
+    before_action :authenticate_user!, only: [:index, :new, :create]
     
     def index
         @user = User.find_by(params[:id])
@@ -16,37 +17,41 @@ class WishlistsController < ApplicationController
         @wishlist = Wishlist.new(wishlist_params)
         @wishlist.user = @user
         if @wishlist.save
-          redirect_to user_wishlist_path(@user, @wishlist), notice: "Wishlist created successfully."
+          redirect_to user_wishlists_path(current_user), notice: "Wishlist created successfully."
         else
           render :new
         end
     end
 
     def show
-        @user = User.find_by(params[:id])
-        @wishlist = Wishlist.find_by(params[:id])
+        @user = current_user
+        @wishlist = Wishlist.find_by(id: params[:id])
+        render :show
     end
 
     def edit
-        @wishlist = Wishlist.find_by(params[:id])
+        @wishlist = Wishlist.find_by(id: params[:id])
         @user = User.find_by_id(@wishlist.user_id)
     end
 
 
   def update
-    @wishlist = Wishlist.find_by(params[:id])
+    @wishlist = Wishlist.find_by(id: params[:id])
     @user = User.find_by_id(@wishlist.user_id)
-      if @wishlist.update(wishlist_params)
-        redirect_to user_wishlist_path(@user, @wishlist)
-      else
-          render 'edit'
-      end
+    if @wishlist.update(wishlist_params)
+      redirect_to user_wishlists_path(current_user), notice: "Wishlist updated successfully."
+    else
+      render :edit
+    end
   end
 
   def destroy
-    Wishlist.find(params[:id]).destroy
-    flash[:success] = "Wishlist deleted"
-    redirect_to user_wishlists(@current_user)
+    @wishlist = Wishlist.find_by(id: params[:id])
+    @user = User.find_by_id(@wishlist.user_id)
+    @wishlist.destroy
+    respond_to do |format|
+      format.html { redirect_to user_wishlists_path(current_user), notice: 'Wishlist was removed.' }
+    end
   end
 
   def toggle_groupbuy
