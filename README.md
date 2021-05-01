@@ -2,7 +2,7 @@
 
 An app to view all upcoming mechanical keyboard groupbuys and add them to wishlists. 
 
-![image](https://user-images.githubusercontent.com/17733481/116609275-0d5d5980-a8e9-11eb-8525-a0e747a8cbf8.png)
+<p align="center"><img src="hoshii.gif" width="700px"/></p>
 
 
 ## Features
