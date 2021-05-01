@@ -9,7 +9,7 @@ An app to view all upcoming mechanical keyboard groupbuys and add them to wishli
 
 * Third-party sign-up and login
 * Wishlist
-* Sorting & Search functionality
+* Sorting & Search 
 
 ## Supported Versions
 
