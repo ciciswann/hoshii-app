@@ -10,6 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require bootstrap
  *= require_tree .
  *= require_self
  */
@@ -55,6 +56,7 @@
   */
 
 @import "bootstrap";
+@import 'bootstrap/dist/css/bootstrap';
 
 $grey: #ccc;
 $muted-grey: #999;
@@ -165,12 +167,12 @@ html {
   }
 }
 
-.col-12 {
+.col-12, .col-12#bootstrap-overrides {
   flex: 0 0 75%;
   max-width: 100%;
 }
 
-.col-13 {
+.col-13, .col-13#bootstrap-overrides {
   flex: 0 0 100%;
   max-width: 100%;
 }
@@ -522,7 +524,7 @@ img {
   background-color: #fff!important;
 }
 
-.bg-primary {
+.bg-primary#bootstrap-overrides {
   background-color: #363336!important;
 }
 
@@ -534,7 +536,7 @@ img {
   box-shadow: 0 3px 6px rgba(3,0,71,.1)!important;
 }
 
-.form-control {
+.form-control#bootstrap-overrides {
   display: block;
   width: 100%;
   height: calc(1.6em + 1.75rem + 2px);
@@ -651,7 +653,7 @@ button, input, optgroup, select, textarea {
   line-height: inherit;
 }
 
-a {
+a#bootstrap-overrides {
     font-size: 1rem;
     color: #18113c;
     font-weight: 500;
@@ -731,6 +733,27 @@ label {
   border-color: #7B1E7A;
 }
 
+input[type=submit i]#btn-filter {
+  color: rgb(71, 71, 71);
+  background-color: #e9e9e9;
+  border: 1px solid #d4d4d4;
+  width: 100%;
+  border-radius: 5%;
+  margin-top: 1.5rem;
+  box-shadow: 0 1px 3px rgba(3, 0, 71, .1);
+}
+
+input[type=submit i]#btn-github {
+  width: 65%;
+  position: relative;
+}
+
+input[type=submit i]#btn-filter:hover {
+  background-color: #d4d4d4;
+  border: 1px solid #d4d4d4;
+  box-shadow: 0 1px 3px rgba(3, 0, 71, .5);
+}
+
 .btn-wish {
   width: 100%;
 }
@@ -772,7 +795,7 @@ label {
   align-items: center!important;
 }
 
-.col-md-12 {
+.col-md-12, .col-md-12#bootstrap-overrides {
     flex: 0 0 100%;
     max-width: 100%;
 }
@@ -914,7 +937,7 @@ ul {
   width: 100%;
 }
 
-.btn-success, .btn-wish {
+.btn-success#bootstrap-overrides, .btn-wish {
   color: #fff;
   background-color: #ff4f8f;
   border-color: #ff4f8f;
@@ -929,7 +952,7 @@ ul {
 }
 
 
-.btn-white {
+.btn-white#bootstrap-overrides {
   color: #18113c;
   background-color: #fff;
   border-color: #fff;
@@ -1608,4 +1631,10 @@ button#like {
 }
 .popover__message {
   text-align: center;
+}
+
+.center {
+  text-align: center;
+  margin-bottom: -1rem;
+  margin-top: 2.5rem;
 }
