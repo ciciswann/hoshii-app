@@ -7,8 +7,9 @@ class Groupbuy < ApplicationRecord
 
     # Scope Methods
     scope :filter_by_status, -> (status) { where status: status }
-    scope :sort_by_price, -> (price) { order("price ASC")}
-    scope :filtered, -> (query_params) { Groupbuy::Filter.new.filter(self, query_params) }
+    scope :sort_by_price_asc, -> (asc) { order("pricing ASC")}
+    scope :sort_by_price_desc, -> (desc) { order("pricing DESC")}
+    scope :filter_by_cat, -> (category_id) {where category_id: category_id}
 
     def self.search(search)
         if search
