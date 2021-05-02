@@ -10,7 +10,7 @@ An app to view all upcoming mechanical keyboard groupbuys and add them to wishli
 
 ### Wishlist
 
-Create and update wishlists. Browse groupbuys and add them to your wishlists. 
+Create and update wishlists. Browse groupbuys and add them to your wishlists. If a groupbuy is already in a wishlist, a heart icon will be located on the top right of the groupbuy card.
 
 ### Search, Sort, & Filter
 
