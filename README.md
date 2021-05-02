@@ -12,9 +12,9 @@ An app to view all upcoming mechanical keyboard groupbuys and add them to wishli
 
 Create and update wishlists. Browse groupbuys and add them to your wishlists. 
 
-### Sorting & Search 
+### Search, Sort, & Filter
 
-Filter groupbuys by their status or item type. Search for a groupbuy by its name.
+Search for a groupbuy by its name, filter groupbuys by their status or item type, and/or sort them by price or name.
 
 ### Third-party sign-up and login
 
