@@ -20,15 +20,14 @@ Filter groupbuys by their status or item type. Search for a groupbuy by its name
 
 Users can sign-up and login via Github. To run this feature, follow these steps:
 
-[Register a new OAuth Application with Github](https://github.com/settings/applications/new)<br>
-After installing all gem dependencies:
+* [Register a new OAuth Application with Github](https://github.com/settings/applications/new)<br>
+* After installing all gem dependencies:
 ```$ bundle exec figaro install``` <br>
 This creates a commented config/application.yml file and adds it to your .gitignore.<br>
-
-Add your Github developer credentials to the application.yml file: <br>
+* Add your Github developer credentials to the application.yml file: <br>
 GITHUB_KEY: {add your appID here} <br>
 GITHUB_SECRET: {{add your app secret here}} <br>
-Restart your app, you should now see the "Sign in with Github" button in your signup page. <br>
+* Restart your app, you should now see the "Sign in with Github" button in your sign-up page. <br>
 
 ## Supported Versions
 
