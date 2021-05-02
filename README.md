@@ -13,8 +13,8 @@ An app to view all upcoming mechanical keyboard groupbuys and add them to wishli
 
 ## Supported Versions
 
-* Ruby 2.6.1
-* Rails 6.1.3.1
+* Ruby ~> 2.6.0
+* Rails 6.1.3
 * SQLite 3.32.3
 
 ## Installation Guide
