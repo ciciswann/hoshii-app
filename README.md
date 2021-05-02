@@ -1,4 +1,4 @@
-# Hoshii App
+# Hoshii ほしい App
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 An app to view all upcoming mechanical keyboard groupbuys and add them to wishlists. 
