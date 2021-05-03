@@ -1,14 +1,14 @@
 <div class="container d-flex flex-column">
     <div class="row align-items-center justify-content-center no-gutters min-vh-100">
-        <div class="col-lg-5 col-md-8 py-8 py-xl-0">
-            <div class="card shadow">
+        <div class="col-md-13 py-8 py-xl-0">
+            <div class="card shadow rounded">
                 <div class="card-body p-6">
                   <div class="mb-4">
                     <img src="/assets/Logo.png" width="150"alt>
                     <h1 class="mb-1 font-weight-bold">Sign Up</h1>
                     <span>
                         Already have an account? 
-                        <a href="#" class="ml-1">Sign In</a>
+                        <a href="<%= new_user_session_path %>" class="ml-1">Log In</a>
                     </span>
                   </div>
                   <%= form_with(model: resource, scope: resource_name, url: registration_path(resource_name), method: :post, class: "form") do |f| %>
@@ -36,8 +36,9 @@
                   
                   <% end %>
                   <hr class="my-4">
-                  
-                  <%= render "devise/shared/links" %>
+                  <div class="center">
+                    <%= render "devise/shared/links" %>
+                  </div>
                 </div>
             </div>
         </div>
