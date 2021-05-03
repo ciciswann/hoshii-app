@@ -26,7 +26,7 @@
     <% @groupbuys.each do |g|%>
         <div class="col-lg-4">
             <div class="card mb-4 card-hover">
-                <a href="/groupbuys/<%= g.id %>" class="card-img-top">
+                <a href="<% if current_user %>/groupbuys/<%= g.id %><%end%>" class="card-img-top">
                     <% if g.wishlist_id != nil %>
 
                             <div href="#" class="heart">
@@ -49,7 +49,13 @@
                         <li class="list-inline-item"><p class="boldish">End Date:</p> <%= g.end_date %></li>
                     </ul>
                     <ul class="mb-3  list-inline">
-                        <li class="list-inline-item"><p class="boldish">Base Price:</p> <%= '$%.2f' % g.pricing %></li>
+                        <li class="list-inline-item">
+                            <% if g.pricing != 0.0 %>
+                                <p class="boldish">Base Price:</hp> <%= '$%.2f' % g.pricing %>
+                            <% else %>
+                                Pricing Not Available
+                            <% end %>
+                        </li>
                     </ul>
                     <ul class="mb-3  list-inline">
                         <li class="list-inline-item"><p class="boldish">Sale Type:</p> <%= g.sale_type %></li>
