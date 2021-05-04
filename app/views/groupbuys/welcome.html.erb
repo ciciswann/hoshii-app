@@ -1,5 +1,5 @@
 <body>
-    <div class="bg-primary">
+    <div class="bg-primary", id="bootstrap-overrides">
         <div class="container">
             <!-- Hero Section -->
             <div class="row align-items-center no-gutters">
@@ -9,12 +9,12 @@
                         <p class="text-white-50 mb-4 lead">
                             Stay up-to-date on the latest custom mechanical keyboard groupbuys.
                         </p>
-                        <a href="/groupbuys" class="btn btn-white">Browse Groupbuys</a>
-                        <a href="pages/sign-in.html" class="btn btn-success">Create a Wishlist</a>
+                        <a href="/groupbuys" class="btn btn-white" id="bootstrap-overrides">Browse Groupbuys</a>
+                        <a href="<% if user_signed_in? %><%= new_user_wishlist_path(current_user) %><% else %><%= new_user_session_path %><%end%>" class="btn btn-success" id="bootstrap-overrides">Create a Wishlist</a>
                     </div>
                 </div>
                 <div class=" col-xl-7 col-lg-6 col-md-13 text-lg-right text-center">
-                    <img src="assets/keebs2.png" alt="" class="img-fluid">
+                    <img src="assets/keebs3.png" alt="" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -48,7 +48,8 @@
     <div class="py-6">
         <div class="container">
             <div class="row">
-                <%= render "groupbuys" %>
+                <div class="col-xl-9 col-lg-9 col-md-8 col-12 col-13" id="bootstrap-overrides">
+                    <%= render "groupbuys" %>
             </div>
         </div>
     </div>
