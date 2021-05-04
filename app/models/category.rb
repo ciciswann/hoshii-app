@@ -1,5 +1,3 @@
-require 'pry'
-
 class Category < ApplicationRecord
     has_many :groupbuys
     has_many :wishlists, through: :groupbuys
