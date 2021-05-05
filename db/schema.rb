@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_21_091851) do
+ActiveRecord::Schema.define(version: 2021_04_26_192413) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2021_04_21_091851) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "wishlist_id"
     t.integer "category_id"
+    t.string "status"
     t.index ["category_id"], name: "index_groupbuys_on_category_id"
     t.index ["wishlist_id"], name: "index_groupbuys_on_wishlist_id"
   end
@@ -56,11 +57,11 @@ ActiveRecord::Schema.define(version: 2021_04_21_091851) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "note"
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.index ["user_id"], name: "index_wishlists_on_user_id"
   end
 
-  add_foreign_key "groupbuys", "categories"
-  add_foreign_key "groupbuys", "wishlists"
-  add_foreign_key "wishlists", "users"
+  add_foreign_key "groupbuys", "categories", on_delete: :nullify
+  add_foreign_key "groupbuys", "wishlists", on_delete: :nullify
+  add_foreign_key "wishlists", "users", on_delete: :cascade
 end
