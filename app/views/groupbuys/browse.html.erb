@@ -17,16 +17,16 @@
                         <!-- List  -->
                         <div class="dropdown bootstrap-select" style="width: 100%;">
                             <%= form_with(url: groupbuys_url, method: :get, class: "selectpicker sort-item" ) do |f| %>
-                                <%= collection_select(:wishlist, :wishlist, @user_wishlists, :id, :name, {:selected => @user_wishlists.first}) %>
+                                
                                 <select name="wishlist_id" id="wishlist_id">
                                     <!-- Select a Wishlist -->
-                                    <option value="" <%= !@wishlist ? "selected" : "" %>>SELECT A WISHLIST</option>
+                                    <option value="0" <%= !@wishlist ? "selected" : "" %>>SELECT A WISHLIST</option>
 
                                     <% @user_wishlists.each do |w| %>
-                                        <option data-sort="<%= w.id %>" value="<%=w.id %>" <%= "#{w.id}" == @wishlist ? "selected" : "" %>><%=w.name%></option>
+                                        <option data-sort="<%= w.id %>" value="<%= w.id %>" <%= "#{w.id}" == @wishlist ? "selected" : "" %>><%=w.name%></option>
                                     <% end %>
                                 </select>
-                                <%= submit_tag('Update', :name => nil, onClick:"changeSelected();") %>
+                                <%= submit_tag('Update') %>
                             <% end %>
                         </div>
                     </div>
@@ -40,43 +40,54 @@
                     <div class="card-body">
                         <span class="dropdown-header px-0 mb-2"> Type</span>
                         <!-- Checkbox -->
-                        <div class="custom-control custom-checkbox mb-1">
-                            <input type="checkbox" class="custom-control-input" name="" id="reactCheck" checked="">
-                            <label class="custom-control-label" for="reactCheck">Keyboard</label>
-                        </div>
-                        <!-- Checkbox -->
-                        <div class="custom-control custom-checkbox mb-1">
-                            <input type="checkbox" class="custom-control-input" id="javascriptCheck">
-                            <label class="custom-control-label" for="javascriptCheck">Keycap</label>
-                        </div>
-                        <!-- Checkbox -->
-                        <div class="custom-control custom-checkbox mb-1">
-                            <input type="checkbox" class="custom-control-input" id="angularCheck">
-                            <label class="custom-control-label" for="angularCheck">Switch</label>
-                        </div>
+                        <%= form_tag groupbuys_path, method: :get do %>
+                            <div class="custom-control custom-checkbox mb-1">
+                                <input type="checkbox" name="category_id[]" value="1" class="custom-control-input" id="reactCheck">
+                                <label class="custom-control-label" for="reactCheck">Keyboard</label>
+                            </div>
+                            <!-- Checkbox -->
+                            <div class="custom-control custom-checkbox mb-1">
+                                <input type="checkbox" name="category_id[]" value="2" class="custom-control-input" id="javascriptCheck">
+                                <label class="custom-control-label" for="javascriptCheck">Keycap</label>
+                            </div>
+                            <!-- Checkbox -->
+                            <div class="custom-control custom-checkbox mb-1">
+                                <input type="checkbox" name="category_id[]" value="3" class="custom-control-input" id="angularCheck">
+                                <label class="custom-control-label" for="angularCheck">Switch</label>
+                            </div>
+                        
                     </div>
                     <div class="card-body border-top">
                         <span class="dropdown-header px-0 mb-2"> Status</span>
                         <!-- Checkbox -->
-                        <div class="custom-control custom-checkbox mb-1">
-                            <input type="checkbox" class="custom-control-input" id="allTwoCheck">
-                            <label class="custom-control-label" for="allTwoCheck">Live</label>
-                        </div>
-                        <!-- Checkbox -->
-                        <div class="custom-control custom-checkbox mb-1">
-                            <input type="checkbox" class="custom-control-input" id="beginnerTwoCheck" checked="">
-                            <label class="custom-control-label" for="beginnerTwoCheck">Upcoming</label>
-                        </div>
-                        <!-- Checkbox -->
-                        <div class="custom-control custom-checkbox mb-1">
-                            <input type="checkbox" class="custom-control-input" id="intermediateCheck">
-                            <label class="custom-control-label" for="intermediateCheck">Interest Check</label>
-                        </div>
-                        <!-- Checkbox -->
-                        <div class="custom-control custom-checkbox mb-1">
-                            <input type="checkbox" class="custom-control-input" id="AdvancedTwoCheck">
-                            <label class="custom-control-label" for="AdvancedTwoCheck">Ended</label>
-                        </div>
+                        
+                            <div class="custom-control custom-checkbox mb-1">
+                                <input type="checkbox" name="status[]" value="live" class="custom-control-input" id="allTwoCheck">
+                                <label class="custom-control-label" for="allTwoCheck">Live</label>
+                            </div>
+                            <!-- Checkbox -->
+                            <div class="custom-control custom-checkbox mb-1">
+                                <input type="checkbox" name="status[]" value="upcoming" class="custom-control-input" id="beginnerTwoCheck">
+                                <label class="custom-control-label" for="beginnerTwoCheck">Upcoming</label>
+                            </div>
+                            <!-- Checkbox -->
+                            <div class="custom-control custom-checkbox mb-1">
+                                <input type="checkbox" name="status[]" value="ic" class="custom-control-input" id="intermediateCheck">
+                                <label class="custom-control-label" for="intermediateCheck">Interest Check</label>
+                            </div>
+                            <!-- Checkbox -->
+                            <div class="custom-control custom-checkbox mb-1">
+                                <input type="checkbox" name="status[]" value="ended" class="custom-control-input" id="AdvancedTwoCheck">
+                                <label class="custom-control-label" for="AdvancedTwoCheck">Ended</label>
+                            </div>
+                            
+                        
+                    </div>
+                    <div class="card-body border-top">
+                            <span class="dropdown-header px-0 mb-2">Sort By</span>
+                            <%= select_tag :ordering, options_for_select([['Select', '5'],['Price - Low to High', '0'], ['Price - High to Low', '1'], ['Name - A to Z', '2'], ['Name - Z to A', '3']]), style: "border-color: #dbd8e9 !important;" %>
+                            <%= submit_tag "Submit", id:"btn-filter" %>
+                        <% end %>
                     </div>
                 </div>
             </div>
