@@ -1203,6 +1203,10 @@ input {
   }
 }
 
+.like-button:hover {
+  text-decoration: none;
+}
+
 .like-button {
   i {
       &.not-liked {
