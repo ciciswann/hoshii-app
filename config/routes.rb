@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
 
   resources :categories, only: nil do
-    resources :groupbuys, only: :index, module: :categories
+    resources :groupbuys, only: :index
   end
   
   # resources :groupbuys do
